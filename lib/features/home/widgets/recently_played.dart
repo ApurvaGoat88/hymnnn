@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:getwidget/getwidget.dart';
 import 'package:spotify/common/data/data.dart';
+import 'package:spotify/common/page_transitons/page_trans.dart';
+import 'package:spotify/features/audio/audio_PLAYER.dart';
 class Recentlyplayed extends StatefulWidget {
   const Recentlyplayed({super.key});
 
@@ -25,7 +27,9 @@ class _RecentlyplayedState extends State<Recentlyplayed> {
             crossAxisAlignment: Data().recentlyPlayed[index]['alignment'] as CrossAxisAlignment,
             children: [
               GestureDetector(
-                onTap:(){},
+                onTap:(){
+                  Navigator.push(context, createRouteRL( AudioPlayerPro(audioURL: data['audio'].toString(),image: data['image'].toString(),name: data['name'].toString(),))) ;
+                },
                 child: GFAvatar(
                   shape: Data().recentlyPlayed[index]['shape'] as GFAvatarShape,
                   backgroundImage: AssetImage(Data().recentlyPlayed[index]['image'].toString()),
